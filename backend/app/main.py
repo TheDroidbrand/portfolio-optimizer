@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI # type: ignore
 
 from finance.data_fetcher import get_stock_data
 

@@ -1,4 +1,4 @@
-import yfinance as yf
+import yfinance as yf # type: ignore
 
 def get_stock_data(ticker, period="1y"):
     stock = yf.Ticker(ticker)
