@@ -16,3 +16,7 @@ def root():
 @app.get("/stock/{ticker}")
 def stock_data(ticker: str):
     return get_stock_data(ticker.upper())
+
+@app.get("/analytics/{ticker}")
+def analytics(ticker: str):
+    return calculate_metrics(ticker.upper())
