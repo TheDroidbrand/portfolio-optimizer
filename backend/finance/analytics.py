@@ -18,3 +18,10 @@ def calculate_metrics(ticker, period="1y"):
     sharpe_ratio = (
         annual_return - risk_free_rate
     ) / annual_volatility
+
+    return {
+        "ticker": ticker,
+        "annual_return": round(float(annual_return), 4),
+        "annual_volatility": round(float(annual_volatility), 4),
+        "sharpe_ratio": round(float(sharpe_ratio), 4),
+    }
