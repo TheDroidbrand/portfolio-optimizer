@@ -68,3 +68,31 @@ def generate_efficient_frontier(
         )
 
     return portfolio_results
+
+def find_optimal_portfolios(
+    tickers,
+    period="1y"
+):
+
+    portfolios = generate_efficient_frontier(
+        tickers=tickers,
+        num_portfolios=5000,
+        period=period
+    )
+
+    max_sharpe = max(
+        portfolios,
+        key=lambda p: p["sharpe"]
+    )
+
+    min_risk = min(
+        portfolios,
+        key=lambda p: p["risk"]
+    )
+
+    return {
+        "max_sharpe_portfolio":
+            max_sharpe,
+        "minimum_risk_portfolio":
+            min_risk
+    }
