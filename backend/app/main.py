@@ -24,3 +24,12 @@ def stock_data(ticker: str):
 @app.get("/analytics/{ticker}")
 def analytics(ticker: str):
     return calculate_metrics(ticker.upper())
+
+@app.post("/portfolio")
+def portfolio_analysis(
+    request: PortfolioRequest
+):
+    return calculate_portfolio_metrics(
+        request.tickers,
+        request.weights
+    )
