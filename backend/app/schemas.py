@@ -20,3 +20,7 @@ class PortfolioRequest(BaseModel):
             )
 
         return self
+
+
+class OptimizationRequest(BaseModel):
+    tickers: List[str]
