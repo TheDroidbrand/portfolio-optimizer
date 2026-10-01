@@ -6,6 +6,9 @@ from app.schemas import PortfolioRequest
 from finance.portfolio import (
     calculate_portfolio_metrics
 )
+from finance.optimizer import (
+    find_optimal_portfolios
+)
 
 app = FastAPI(
     title="Portfolio Optimizer API"
@@ -32,4 +35,18 @@ def portfolio_analysis(
     return calculate_portfolio_metrics(
         request.tickers,
         request.weights
+    )
+
+@app.get("/optimize")
+def optimize():
+
+    tickers = [
+        "AAPL",
+        "MSFT",
+        "NVDA",
+        "TSLA"
+    ]
+
+    return find_optimal_portfolios(
+        tickers
     )
