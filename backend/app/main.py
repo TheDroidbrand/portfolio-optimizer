@@ -2,7 +2,7 @@ from fastapi import FastAPI # type: ignore
 
 from finance.data_fetcher import get_stock_data
 from finance.analytics import calculate_metrics
-from app.schemas import PortfolioRequest
+from app.schemas import PortfolioRequest, OptimizationRequest
 from finance.portfolio import (
     calculate_portfolio_metrics
 )
@@ -49,4 +49,11 @@ def optimize():
 
     return find_optimal_portfolios(
         tickers
+    )
+@app.post("/optimize")
+def optimize_portfolio(
+    request: OptimizationRequest
+):
+    return find_optimal_portfolios(
+        request.tickers
     )
